@@ -11,5 +11,19 @@ exports.flowControlAnswers = {
     // otherwise the function should return the number, or false if no number
     // was provided or the value provided is not a number
 
+    let codeIndex = null,
+      statusCode = {
+        'fizzbuzz': num % 3 === 0 && num % 5 === 0,
+        'fizz': num % 3 === 0,
+        'buzz': num % 5 === 0,
+        'true': typeof num === 'number',
+        'false': typeof num !== 'number'
+      };
+
+    for (codeIndex in statusCode) {
+        if (statusCode.hasOwnProperty(codeIndex) && statusCode[codeIndex]) {
+            return codeIndex === 'true' ? num : codeIndex === 'false' ? false : codeIndex;
+        }
+    }
   }
 };
